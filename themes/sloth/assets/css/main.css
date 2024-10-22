@@ -1,6 +1,17 @@
+@font-face {
+  font-family: geist;
+  src: url(../fonts/GeistMono-Regular.woff2);
+}
+
+@font-face {
+  font-family: geist;
+  src: url(../fonts/GeistMono-Bold.woff2);
+  font-weight: bold;
+}
+
 body {
   color: #222;
-  font-family: sans-serif;
+  font-family: 'geist' sans-serif;
   line-height: 1.5;
   margin: 1rem;
   max-width: 768px;
