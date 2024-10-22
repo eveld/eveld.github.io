@@ -1,11 +1,11 @@
 @font-face {
   font-family: geist;
-  src: url(../fonts/GeistMono-Regular.woff2);
+  src: url(/fonts/GeistMono-Regular.woff2);
 }
 
 @font-face {
   font-family: geist;
-  src: url(../fonts/GeistMono-Bold.woff2);
+  src: url(/fonts/GeistMono-Bold.woff2);
   font-weight: bold;
 }
 
