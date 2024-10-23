@@ -3,7 +3,74 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf(),
+);
 ---
+
+<style>
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	ul li {
+		width: 100%;
+	}
+	
+	ul li * {
+		text-decoration: none;
+		transition: 0.2s ease;
+	}
+
+	ul li a {
+		display: block;
+	}
+	
+	.title {
+		margin: 0;
+		color: rgb(var(--black));
+		line-height: 1;
+	}
+	
+	.date {
+		margin: 0;
+		color: rgb(var(--gray));
+	}
+	
+	ul li a:hover h4,
+	
+	ul li a:hover .date {
+		color: rgb(var(--accent));
+	}
+	
+	ul a:hover img {
+		box-shadow: var(--box-shadow);
+	}
+	
+	@media (max-width: 720px) {
+		ul {
+			gap: 0.5em;
+		}
+	
+		ul li {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	section {
+		border-bottom: 1px solid #ebebeb;
+		padding: 40px;
+	}
+</style>
 
 <!doctype html>
 <html lang="en">
@@ -13,26 +80,34 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>Hello!</h1>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-				Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. 
-				Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. 
-				In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. 
-				Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. 
-				Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. 
-				Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-			</p>
-			<p>
-				Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. 
-				Habitasse platea dictumst quisque sagittis purus sit amet. 
-				Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. 
-				Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. 
-				Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. 
-				Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. 
-				Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. 
-				Sed tempus urna et pharetra pharetra massa massa ultricies mi.
-			</p>
+			<section>
+				<h1>Hello!</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. 
+					Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. 
+					In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. 
+					Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. 
+					Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. 
+					Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+				</p>
+			</section>
+			<section>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.slug}/`}>
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.published_at} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
