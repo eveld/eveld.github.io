@@ -1,13 +1,20 @@
 ---
+import ThemeSwitcher from './ThemeSwitcher.astro';
+
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} erikveld.com. All rights reserved.
+	<span>&copy; {today.getFullYear()} erikveld.com. All rights reserved.</span>
+	<span>
+		<ThemeSwitcher />
+	</span>
 </footer>
 <style>
 	footer {
+		display: flex;
 		padding: 40px 0;
 		font-size: 12px;
+		justify-content: space-between;
 	}
 </style>

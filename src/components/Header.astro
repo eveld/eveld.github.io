@@ -46,4 +46,12 @@ import { SITE_TITLE } from '../consts';
 		color: var(--accent);
 		text-decoration: none;
 	}
+
+	:global(.dark) nav a {
+		color: var(--foreground-dark);
+	}
+
+	:global(.dark) nav a.active {
+		color: var(--accent-dark);
+	}
 </style>
