@@ -4,10 +4,12 @@
 
 	--foreground: rgb(102, 102, 102);
 	--background: rgb(250, 250, 250);
-	--foreground-dark: #726b8a;
+	--foreground-dark: #8d87a2;
 	--background-dark: #2b2835;
 
 	--white: #fffaff;
+	--gray: #ebebeb;
+	--gray-dark: #333333;
 }
 
 @font-face {

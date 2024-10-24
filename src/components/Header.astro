@@ -16,7 +16,7 @@ import { SITE_TITLE } from '../consts';
 <style>
 	header {
 		margin: 0;
-		padding: 0 20px;
+		padding: 20px 30px 0 30px;
 	}
 
 	h2 {
@@ -33,13 +33,17 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 20px;
 	}
 	
 	nav a {
-		padding: 1em 0.5em;
 		border-bottom: 4px solid transparent;
 		color: var(--foreground);
 		text-decoration: none;
+	}
+
+	nav .internal-links a {
+		margin: 0 0 0 20px;
 	}
 	
 	nav a.active {
