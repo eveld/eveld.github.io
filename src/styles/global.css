@@ -1,17 +1,13 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 :root {
 	--accent: #000000;
-	--accent-dark: #ffffff;
+	--accent-dark: #ac92ff;
 
 	--foreground: rgb(102, 102, 102);
 	--background: rgb(250, 250, 250);
-	--foreground-dark: #a1a1a1;
-	--background-dark: rgb(34, 34, 34);
+	--foreground-dark: #726b8a;
+	--background-dark: #2b2835;
+
+	--white: #fffaff;
 }
 
 @font-face {
@@ -53,8 +49,17 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
+	color: var(--accent);
 	line-height: 1.2;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+	color: var(--white);
 }
 
 h1 {
