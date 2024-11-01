@@ -1,15 +1,19 @@
 :root {
 	--accent: #000000;
-	--accent-dark: #ac92ff;
+	--purple: #937dbd;
+	--dark-purple: #584b67;
+	--yellow: #f7d85e;
+	--orange: #c4754a;
+	--dark-gray: #584b64;
 
-	--foreground: rgb(102, 102, 102);
-	--background: rgb(250, 250, 250);
-	--foreground-dark: #B8B1D0;
-	--background-dark: #2b2835;
+	--foreground: #2b2029;
+	--background: #f8f4e9;
+	--foreground-dark: #faf1f7;
+	--background-dark: #2d1c2e;
 
 	--white: #fffaff;
 	--gray: #ebebeb;
-	--gray-dark: #333333;
+	--line: #4f3e50;
 }
 
 @font-face {
@@ -51,7 +55,7 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: var(--accent);
+	color: var(--dark-purple);
 	line-height: 1.2;
 }
 
@@ -61,7 +65,7 @@ h6 {
 .dark h4,
 .dark h5,
 .dark h6 {
-	color: var(--white);
+	color: var(--purple);
 }
 
 h1 {
@@ -90,19 +94,19 @@ b {
 }
 
 a {
-	color: var(--accent);
-}
-
-a:hover {
-	color: var(--accent);
+	color: var(--dark-purple);
 }
 
 .dark a {
-	color: var(--accent-dark);
+	color: var(--purple);
+}
+
+a:hover {
+	color: var(--purple);
 }
 
 .dark a:hover {
-	color: var(--accent-dark);
+	color: var(--purple);
 }
 
 p {
@@ -134,13 +138,14 @@ img {
 
 code {
 	padding: 2px 5px;
-	background-color: var(--background-dark);
 	border-radius: 2px;
 }
 
 pre {
 	padding: 1.5em;
+	background-color: #584b67;
 	border-radius: 8px;
+	margin: 0 0 2em 0;
 }
 
 pre > code {
@@ -148,10 +153,16 @@ pre > code {
 }
 
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+	border-left: 4px solid var(--purple);
+	background-color: #584b67;
+	padding: 8px 8px 8px 20px;
+	margin: 0 0 2em 0;
+	border-radius: 4px;
+}
+
+.prose blockquote > p {
+	margin: 0;
+	padding: 0;
 }
 
 hr {

@@ -1,10 +1,8 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
+import DefaultLayout from '../layouts/Default.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf(),
@@ -45,58 +43,53 @@ const posts = (await getCollection('blog')).sort(
 	}
 
 	:global(.dark) section {
-		border-color: var(--gray-dark);
-		padding: 20px 40px 40px 40px;
+		border-color: var(--line);
 	}
 
 	section h2 {
-		color: var(--foreground);
+		color: var(--orange);
 		text-transform: uppercase;
 		font-size: 12px;
 		font-weight: 400;
 		margin-bottom: 40px;
 	}
+
+	:global(.dark) section h2 {
+		color: var(--yellow);
+	}
+
+	
 </style>
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<h1>Hello</h1>
-				<p>
-					Welcome to my website...etc. etc.
-				</p>
-				<p>
-					I am still figuring out what this page should look like and what I want to put on it.
-					In the meantime, it will mostly be experimenting with <a href="https://astro.build/">Astro</a> until I figure it out.
-				</p>
-			</section>
-			<section>
-				<h2>Projects</h2>
-			</section>
-			<section>
-				<h2>Latest posts</h2>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<h4 class="title">{post.data.title}</h4>
-								</a>
-								<p class="date">
-									<FormattedDate date={post.data.published_at} />
-								</p>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section>
+		<h1>Hello</h1>
+		<p>
+			Welcome to my website...etc. etc.
+		</p>
+		<p>
+			I am still figuring out what this page should look like and what I want to put on it.
+			In the meantime, it will mostly be experimenting with <a href="https://astro.build/">Astro</a> until I figure it out.
+		</p>
+	</section>
+	<section>
+		<h2>Projects</h2>
+	</section>
+	<section>
+		<h2>Latest posts</h2>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.slug}/`}>
+							<h4 class="title">{post.data.title}</h4>
+						</a>
+						<p class="date">
+							<FormattedDate date={post.data.published_at} />
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</DefaultLayout>	
